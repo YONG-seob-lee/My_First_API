@@ -148,12 +148,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
 	case WM_KEYDOWN:
+		if (g_game.KeyCheck() == TRUE)			// 아무키나 쳐 누르세요
+		{
+			break;
+		}
+
 		switch (wParam)
 		{
 		case VK_ESCAPE:
 			DestroyWindow(hWnd);
 			break;
-
+		case 'P':
+			g_game.UpdatePause();
+			break;
 		default:
 			break;
 		}
